@@ -1,27 +1,30 @@
-
-
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #D3D3D3;
     margin: 0;
     font-family: 'Arial', sans-serif;
 }
 
+.container {
+    display: flex;
+}
+
 .calculator {
-    width: 300px;
+    width: 700px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    margin-right: 20px;
 }
 
 .display {
     background-color: #444;
     color: white;
     text-align: right;
-    padding: 20px;
+    padding: 40px;
     font-size: 2em;
 }
 
@@ -31,7 +34,7 @@ body {
 }
 
 .button {
-    padding: 20px;
+    padding: 40px;
     border: 1px solid #999;
     text-align: center;
     font-size: 1.5em;
@@ -57,4 +60,32 @@ body {
 
 .button:active {
     opacity: 0.7;
+}
+
+.history {
+    width: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.history h2 {
+    margin: 0 0 20px;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.history ul {
+    list-style: none;
+    padding: 0;
+}
+
+.history li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.history li:last-child {
+    border-bottom: none;
 }

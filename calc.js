@@ -4,10 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let segundoNumero = ''; // Mantido como string para facilitar a concatenação
     let operacao = ''; // Inicialmente vazio
     const divNum = document.querySelector('.primeiroNumero');
+    const historyList = document.getElementById('history-list');
+    const MAX_HISTORY = 10; // Limite do histórico
     let resultado;
 
     divNum.textContent = '0';
- 
+
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             const buttonValue = button.innerText;
@@ -55,6 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
             resultado = num1 * (num2 / 100);
         }
 
+        addToHistory(`${primeiroNumero} ${operacaoSimbolo(operacao)} ${segundoNumero} = ${resultado}`);
+
         divNum.textContent = resultado;
         console.log(resultado); // Exibir resultado no console
 
@@ -62,6 +66,23 @@ document.addEventListener('DOMContentLoaded', function () {
         primeiroNumero = resultado.toString();
         segundoNumero = '';
         operacao = '';
+    }
+
+    function operacaoSimbolo(operacao) {
+        switch (operacao) {
+            case 'somando':
+                return '+';
+            case 'subtraindo':
+                return '−';
+            case 'multiplicando':
+                return '×';
+            case 'dividindo':
+                return '÷';
+            case 'porcentagem':
+                return '%';
+            default:
+                return '';
+        }
     }
 
     function addNumber(buttonValue) {
@@ -85,5 +106,15 @@ document.addEventListener('DOMContentLoaded', function () {
             calcularResultado();
         }
         operacao = novaOperacao;
+    }
+
+    function addToHistory(entry) {
+        const historyItem = document.createElement('li');
+        historyItem.textContent = entry;
+        historyList.appendChild(historyItem);
+
+        if (historyList.children.length > MAX_HISTORY) {
+            historyList.removeChild(historyList.firstChild);
+        }
     }
 });
